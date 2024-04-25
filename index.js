@@ -8,12 +8,16 @@ for(var i = 0; i < numberOfItems; i++){
 
         makeSound(buttonInnerHtml);
 
+        buttonAnimation(buttonInnerHtml);
+
     });
 
 }
 
 document.addEventListener("keydown", function(keyboardEvent){
     makeSound(keyboardEvent.key);
+
+    buttonAnimation(keyboardEvent.key);
 });
 
 
@@ -56,6 +60,15 @@ function makeSound(key){
         default: console.log(this.innerHTML);
 
     }
+}
+
+function buttonAnimation(currentKey){
+    var activeButton = document.querySelector("." + currentKey);
+    //adding the .press class:
+    activeButton.classList.add("pressed");
+
+    //set the timeout:
+    setTimeout( function (){activeButton.classList.remove("pressed")}, 100 );
 }
 
 
